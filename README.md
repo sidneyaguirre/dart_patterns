@@ -1,16 +1,11 @@
 # dart_patterns
 
-A new Flutter project.
+Dart3 Patterns 
 
-## Getting Started
+## Pattern
 
-This project is a starting point for a Flutter application.
+A pattern represents a structure that one or more values can take, like a blueprint.
+Patterns compare against actual values determine if they -match-
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Some patterns, when they match, -destructure- the matched value by pulling data out of it.
+Destructuring lets you unpack values from an object to assign them to local variables, or perform further matching on them.
