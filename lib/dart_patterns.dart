@@ -1,3 +1,4 @@
+export 'src/data/block.dart';
 export 'src/data/data.dart';
 
 export 'src/widgets/app.dart';

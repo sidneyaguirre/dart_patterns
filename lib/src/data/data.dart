@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:dart_patterns/dart_patterns.dart';
 
 class Document {
   Document() : _json = jsonDecode(documentJson);
@@ -30,6 +31,14 @@ class Document {
 
         return (title, modified: localModified);
       }
+    }
+  }
+
+  List<Block> getBlocks() {
+    if (_json case {'blocks': List blocksJson}) {
+      return [for (final blockJson in blocksJson) Block.fromJson(blockJson)];
+    } else {
+      throw const FormatException('Unexpected JSON format');
     }
   }
 }
