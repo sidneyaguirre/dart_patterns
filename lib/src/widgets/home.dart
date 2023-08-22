@@ -13,9 +13,15 @@ class DocHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final metadataRecord = document.metadata;
 
+    var record = (named: 'v', 'y', named2: 'x', 'z');
+    print(record.$1); // 'y'
+    print(record.$2); // 'z'
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        //To get positional fields use getter $<num> on the record
+        //This returns only unnamed fields:
         title: Text(metadataRecord.$1),
       ),
       body: Column(
