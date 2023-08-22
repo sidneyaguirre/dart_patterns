@@ -6,10 +6,31 @@ class Document {
   final Map<String, Object?> _json;
 
   (String, {DateTime modified}) get metadata {
-    const title = "My Document";
-    final now = DateTime.now();
+    //the if-case statement only executes if the case pattern matches the data in _json
+    if (_json
+        case {
+          'metadata': {
+            'title': String title,
+            'modified': String localModified,
+          }
+        }) {
+      return (title, modified: DateTime.parse(localModified));
+    } else {
+      throw const FormatException('Unexpected JSON');
+    }
 
-    return (title, modified: now);
+    //this previous code is equivalent to
+    if (_json.containsKey('metadata')) {
+      final metadataJson = _json['metadata'];
+
+      if (metadataJson is Map) {
+        final title = metadataJson['title'];
+        final localModified =
+            DateTime.parse(metadataJson['modified'] as String);
+
+        return (title, modified: localModified);
+      }
+    }
   }
 }
 
