@@ -11,29 +11,20 @@ class BlockWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle? textStyle;
-
-    /*switch (block.type) {
-      case 'h1':
-        textStyle = Theme.of(context).textTheme.displayMedium;
-      case 'p' || 'checkbox':
-        textStyle = Theme.of(context).textTheme.bodyMedium;
-      case _: //wildcard pattern - equivalent to default
-        textStyle = Theme.of(context).textTheme.bodySmall;
-    }*/
-
-    textStyle = switch (block.type) {
-      'h1' => Theme.of(context).textTheme.displayMedium,
-      'p' || 'checkbox' => Theme.of(context).textTheme.bodyMedium,
-      _ => Theme.of(context).textTheme.bodySmall
-    };
-
     return Container(
-      margin: const EdgeInsets.all(8.0),
-      child: Text(
-        block.text,
-        style: textStyle,
-      ),
-    );
+        margin: const EdgeInsets.all(8.0),
+        child: switch (block) {
+          HeaderBlock(:final text) => Text(
+              text,
+              style: Theme.of(context).textTheme.displayMedium,
+            ),
+          ParagraphBlock(:final text) => Text(text),
+          CheckboxBlock(:final isChecked, :final text) => Row(
+              children: [
+                Checkbox(value: isChecked, onChanged: (_) {}),
+                Text(text),
+              ],
+            )
+        });
   }
 }
